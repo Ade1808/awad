@@ -9,6 +9,14 @@ class ProfilesController < InheritedResources::Base
 			end	
 		end	
 	end	
+	def create
+		@profile = Profile.new(profile_params)
+		if @profile.save
+			redirect_to homes_index_path
+		else
+			render 'new'
+		end	
+	end	
   private
 
     def profile_params
