@@ -1,5 +1,15 @@
+<<<<<<< HEAD
 <div class="container"><h1>Dashboard</h1></div>
 <h1>Articles You Posted</h1>
+=======
+<% if current_user.role == true%>
+<%= render 'map'%>
+<%else%>
+<p id="notice"><%= notice %></p>
+
+<h1>Articles</h1>
+
+>>>>>>> Map
 <table class="table table-hover">
   <thead>
     <tr>
@@ -26,4 +36,11 @@
     	<%end%>
     <% end %>
   </tbody>
+<<<<<<< HEAD
 </table>
+=======
+</table>
+<%end%>
+
+
+>>>>>>> Map

@@ -11,6 +11,7 @@
 
   <body>
     <% if user_signed_in?%>
+      <% if current_user.role==false%>
       <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <a class="navbar-brand" href="#">Pitch In</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,6 +37,7 @@
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-right: 5px">Search</button>
               </form>
+              <%end%>
               <%end%>
                 <%= link_to 'Sign Out' ,destroy_user_session_path , method: :delete ,class:"btn btn-outline-success my-2 my-sm-0"%>
               <% if Profile.find_by(user_id:current_user.id)%>
