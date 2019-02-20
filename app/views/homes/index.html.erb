@@ -1,7 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Articles</h1>
-
+<div class="container"><h1>Dashboard</h1></div>
+<h1>Articles You Posted</h1>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -16,18 +14,16 @@
 
   <tbody>
     <% @articles.each do |article| %>
-      <tr>
-        <td><%= article.title %></td>
-        <td><%= article.description %></td>
-        <td><%= article.recruiting %></td>
-        <td><%= article.skills %></td>
-        <td><%= article.employability %></td>
-
-        <td><%= link_to 'Show', article %></td>
-      </tr>
+    	<% if current_user.id == article.owner_id %>
+	      <tr>
+	        <td><%= article.title %></td>
+	        <td><%= article.description %></td>
+	        <td><%= article.recruiting %></td>
+	        <td><%= article.skills %></td>
+	        <td><%= article.employability %></td>
+	        <td><%= link_to 'Show', article %></td>
+	      </tr>
+    	<%end%>
     <% end %>
   </tbody>
 </table>
-
-
-
