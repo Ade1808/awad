@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_19_224925) do
+ActiveRecord::Schema.define(version: 2019_02_20_180512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,29 @@ ActiveRecord::Schema.define(version: 2019_02_19_224925) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "agreements", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_agreements_on_article_id"
+    t.index ["user_id"], name: "index_agreements_on_user_id"
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "recruiting"
+    t.text "skills"
+    t.string "employability"
+    t.string "country"
+    t.string "city"
+    t.string "street"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "owner_id"
   end
 
   create_table "homes", force: :cascade do |t|
@@ -73,5 +96,7 @@ ActiveRecord::Schema.define(version: 2019_02_19_224925) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "agreements", "articles"
+  add_foreign_key "agreements", "users"
   add_foreign_key "profiles", "users"
 end

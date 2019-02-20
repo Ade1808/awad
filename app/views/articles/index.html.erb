@@ -1,0 +1,10 @@
+   <% @articles.each  do |article| %>   
+      <div class="container">
+      <%= article.title  %>
+      <%= article.description  %>
+      <%= article.recruiting  %>
+      <%= article.skills  %>
+       <%= article.employability  %>
+      <%= link_to 'Show', article  %> 
+    </div>
+    <% end %>
